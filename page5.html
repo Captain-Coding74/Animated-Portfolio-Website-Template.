@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Me — Page 5</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background Layers -->
+  <div class="background-animation"></div>
+  <canvas id="stars-canvas"></canvas>
+  <div class="bokeh-layer"></div>
+  <div class="wave-bg"></div>
+
+  <div class="fancy-bg">
+    <div class="fancy-gradient"></div>
+    <div class="fancy-particles"></div>
+    <div class="fancy-waves"></div>
+  </div>
+
+  <div class="parallax-waves">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <button id="toggle-dark-mode">
+      <span id="dark-icon">🌙</span> Toggle Dark Mode
+    </button>
+
+    <h1 class="fade-in">About Me</h1>
+    <p class="fade-in">
+      Hi! I'm <strong>[Your Name]</strong>, a frontend developer passionate about creative design and interactive websites.
+    </p>
+
+    <hr />
+
+    <h2 class="fade-in">My Goals</h2>
+    <ul class="fade-in">
+      <li>💻 Build engaging web experiences</li>
+      <li>🌐 Create responsive, animated websites</li>
+      <li>🚀 Learn and grow every day</li>
+    </ul>
+
+    <hr />
+
+    <h2 class="fade-in">My Skills</h2>
+    <ul class="fade-in">
+      <li>✅ HTML, CSS, JavaScript</li>
+      <li>✅ Python</li>
+      <li>✅ Animations, Dark Mode, Transitions</li>
+    </ul>
+
+    <hr />
+
+    <blockquote class="fade-in">"Work hard in silence, let your code make the noise."</blockquote>
+
+    <div class="nav-buttons">
+      <a href="index.html" class="nav-button go-back">Back to Home</a>
+      <a href="page4.html" class="nav-button go-back">Back to Page 4</a>
+      <a href="page6.html" class="nav-button go-next">Go to Page 6</a>
+    </div>
+
+    <hr />
+
+    <h2 class="fade-in">Follow Me</h2>
+    <p class="fade-in" style="display: inline-flex; align-items: center; gap: 8px;">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" 
+           alt="Instagram" 
+           width="20" 
+           style="filter: invert(1);" />
+      <a href="https://instagram.com/yourusername" target="_blank" style="text-decoration: none; color: inherit;">
+        <strong style="font-family: 'Courier New', monospace;">@yourusername</strong>
+      </a>
+    </p>
+
+    <button id="back-to-top" title="Back to top">↑ Top</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
+
+  <!-- Page Transitions & Dark Mode Restore -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      if (link.hostname === window.location.hostname) {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-out');
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 500);
+        });
+      }
+    });
+
+    if (localStorage.getItem('dark-mode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
+
+  <!-- Parallax Movement -->
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+      const move = (el, factorX, factorY = factorX) => {
+        const elRef = document.querySelector(el);
+        if (elRef) {
+          elRef.style.transform = `translate(${x * factorX}px, ${y * factorY}px)`;
+        }
+      };
+
+      move('.fancy-gradient', 20);
+      move('.bokeh-layer', 40);
+      move('.parallax-waves', 30);
+    });
+  </script>
+
+</body>
+</html>

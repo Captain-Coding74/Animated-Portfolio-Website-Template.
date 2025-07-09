@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page 3 — My Cool Website</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background Effects -->
+  <div class="background-animation"></div>
+  <canvas id="stars-canvas"></canvas> 
+  <div class="bokeh-layer"></div>
+  <div class="wave-bg"></div>
+
+  <div class="fancy-bg">
+    <div class="fancy-gradient"></div>
+    <div class="fancy-particles"></div>
+    <div class="fancy-waves"></div>
+  </div>
+
+  <div class="parallax-waves">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <button id="toggle-dark-mode">
+      <span id="dark-icon">🌙</span> Toggle Dark Mode
+    </button>
+
+    <h1 class="fade-in">Welcome to Page 3</h1>
+    <p class="fade-in">You're now on the third page — let's keep the momentum going!</p>
+
+    <hr />
+
+    <h2 class="fade-in">About This Journey</h2>
+    <p class="fade-in">This project started from curiosity and grew into a real skill. Page by page, you're becoming a better creator.</p>
+
+    <hr />
+
+    <h2 class="fade-in">Milestones</h2>
+    <ul class="fade-in">
+      <li>✔️ Learned HTML, CSS, and JavaScript basics</li>
+      <li>✔️ Built a dynamic homepage</li>
+      <li>✔️ Added dark mode and animation</li>
+      <li>🔜 Launch more interactive projects</li>
+    </ul>
+
+    <img src="astronaut.jpg" alt="astronaut" class="tilt-img" />
+
+    <p class="fade-in">This picture is full of creativity.</p>
+
+    <hr />
+
+    <blockquote class="fade-in">"Don’t wait for opportunity. Create it."</blockquote>
+
+    <div class="nav-buttons">
+      <a href="page2.html" class="nav-button go-back">Back to Page 2</a>
+      <a href="index.html" class="nav-button go-back">Back to Home</a>
+      <a href="page4.html" class="nav-button go-next">Next Page</a>
+    </div>
+
+    <button id="back-to-top" title="Back to top">↑ Top</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
+
+  <!-- Smooth Page Transition -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      if (link.hostname === window.location.hostname) {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-out');
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 500);
+        });
+      }
+    });
+  </script>
+
+  <!-- Restore Dark Mode -->
+  <script>
+    if (localStorage.getItem('dark-mode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
+
+  <!-- Tilt Effect -->
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".tilt-img"), {
+      max: 25,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.3,
+    });
+  </script>
+
+  <!-- Parallax Mouse Movement -->
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+      const move = (el, factorX, factorY = factorX) => {
+        const elRef = document.querySelector(el);
+        if (elRef) {
+          elRef.style.transform = `translate(${x * factorX}px, ${y * factorY}px)`;
+        }
+      };
+
+      move('.fancy-gradient', 20);
+      move('.bokeh-layer', 40);
+      move('.parallax-waves', 30);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Information Hub — Page 6</title>
+  <link rel="stylesheet" href="page6-style.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: url('Cyber.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #0ff;
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    .typewriter h1 {
+      color: #0ff;
+      font-size: 2.8rem;
+      overflow: hidden;
+      border-right: 3px solid #0ff;
+      white-space: nowrap;
+      margin: 2rem auto;
+      letter-spacing: 2px;
+      animation: typing 3s steps(30, end), blink-caret 0.7s step-end infinite;
+      width: max-content;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 40%; }
+    }
+
+    @keyframes blink-caret {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #0ff; }
+    }
+
+    .info-card {
+      background: rgba(0, 255, 255, 0.1);
+      border: 2px solid #0ff;
+      border-radius: 15px;
+      padding: 2rem;
+      max-width: 700px;
+      margin: 2rem auto;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      color: #eee;
+      animation: floatIn 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes floatIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .nav-button {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid #0ff;
+      background: transparent;
+      color: #0ff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .nav-button:hover {
+      background: #0ff;
+      color: #000;
+    }
+
+    #back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0ff;
+      color: #000;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #0ff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="typewriter">
+    <h1>Information Hub</h1>
+  </div>
+
+  <div class="info-card">
+    <h2>Welcome!</h2>
+    <p>This page contains all the core information about this website — its purpose, features, and the creator's journey behind it.</p>
+    <p>Explore the sections below to learn more.</p>
+  </div>
+
+  <div class="info-card">
+    <h2>📘 About This Project</h2>
+    <p>
+      This website is a result of passion and creativity. Built entirely from scratch using HTML, CSS, and JavaScript, it showcases modern web animations, 3D tilt effects, parallax waves, and interactive dark mode features.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h2>🛠️ Technologies Used</h2>
+    <p>
+      • HTML5 & CSS3 for layout and design<br>
+      • Vanilla JavaScript for interactions and animations<br>
+      • VanillaTilt.js for 3D hover effects<br>
+      • Responsive design with media queries<br>
+      • LocalStorage for theme persistence
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h2>🚀 Goals</h2>
+    <p>
+      The main goal of this website is to experiment with interactive design and demonstrate skills in frontend development. It's part of a growing portfolio for university admissions and future opportunities.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h2>📨 Contact</h2>
+    <p>
+      If you’d like to reach out, collaborate, or give feedback, feel free to contact me:<br>
+      <strong>Email:</strong> your.email@example.com<br>
+      <strong>Instagram:</strong>@yourusername</a>
+    </p>
+  </div>
+
+  <div class="nav-buttons">
+    <a href="page5.html" class="nav-button go-back">Back to Page 5</a>
+    <a href="index.html" class="nav-button go-back">Home</a>
+  </div>
+
+  <button id="back-to-top" title="Back to top">↑ Top</button>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
+
+  <script>
+    // Fade-in body on load
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+    // Page transition
+    document.querySelectorAll('a[href]').forEach(link => {
+      if (link.hostname === window.location.hostname) {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.remove("loaded");
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 500);
+        });
+      }
+    });
+
+    // Back to top
+    const backToTop = document.getElementById("back-to-top");
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
+</body>
+</html>

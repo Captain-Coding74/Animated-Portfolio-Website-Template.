@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page 4 — The Next Level</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background Effects -->
+  <div class="background-animation"></div>
+  <canvas id="stars-canvas"></canvas>
+  <div class="bokeh-layer"></div>
+  <div class="wave-bg"></div>
+
+  <div class="fancy-bg">
+    <div class="fancy-gradient"></div>
+    <div class="fancy-particles"></div>
+    <div class="fancy-waves"></div>
+  </div>
+
+  <div class="parallax-waves">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+  </div>
+
+  <!-- Page Content -->
+  <div class="content">
+    <button id="toggle-dark-mode">
+      <span id="dark-icon">🌙</span> Toggle Dark Mode
+    </button>
+
+    <h1 class="fade-in">The Next Level</h1>
+    <p class="fade-in">Explore more interactive ideas and experimental layouts.</p>
+
+    <hr />
+
+    <h2 class="fade-in">Experiments & Demos</h2>
+    <div class="project-grid fade-in">
+      <div class="project-card">
+        <h3>Interactive Light</h3>
+        <p>A canvas-based experiment with dynamic lighting effects.</p>
+      </div>
+      <div class="project-card">
+        <h3>Scroll Reveal</h3>
+        <p>CSS and JS animations triggered during scroll events.</p>
+      </div>
+      <div class="project-card">
+        <h3>Concept Lab</h3>
+        <p>New layout ideas and microinteractions in progress.</p>
+      </div>
+    </div>
+
+    <hr />
+
+    <blockquote class="fade-in">"Pushing forward — one idea at a time."</blockquote>
+
+    <div class="nav-buttons">
+      <a href="page3.html" class="nav-button go-back">Back to Page 3</a>
+      <a href="index.html" class="nav-button go-back">Home</a>
+      <a href="page5.html" class="nav-button go-next">Next Page</a>
+    </div>
+
+    <button id="back-to-top" title="Back to top">↑ Top</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
+
+  <!-- Navigation Transition -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      if (link.hostname === window.location.hostname) {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-out');
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 500);
+        });
+      }
+    });
+
+    if (localStorage.getItem('dark-mode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
+
+</body>
+</html>

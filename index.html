@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home | Animated Website Template</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background Effects -->
+  <div class="background-animation"></div>
+  <canvas id="stars-canvas"></canvas> 
+  <div class="bokeh-layer"></div>
+  <div class="wave-bg"></div>
+
+  <div class="fancy-bg">
+    <div class="fancy-gradient"></div>
+    <div class="fancy-particles"></div>
+    <div class="fancy-waves"></div>
+  </div>
+
+  <div class="parallax-waves">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+  </div>
+
+  <main class="content">
+    <button id="toggle-dark-mode">
+      <span id="dark-icon">🌙</span> Dark Mode
+    </button>
+
+    <h1 class="fade-in"><strong>Welcome to My Website</strong></h1>
+    <p class="fade-in">Explore modern animations, transitions, and interactive effects.</p>
+
+    <img src="Spidy.jpg" alt="Decorative Image" class="tilt-img fade-in" loading="lazy" />
+
+    <hr />
+
+    <h2 class="fade-in"><i>Highlighted Feature</i></h2>
+    <p class="fade-in">Built with custom code and smooth visual effects.</p>
+
+    <hr />
+
+    <!-- External Link Example -->
+    <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">
+      <img
+        src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+        alt="Google"
+        class="google-logo fade-in"
+        width="200"
+        loading="lazy"
+      />
+    </a>
+
+    <hr />
+
+    <img src="Spida.jpg" alt="Decorative Image 2" class="tilt-img fade-in" width="300" height="300" loading="lazy" />
+
+    <pre class="fade-in">
+This is a custom-built animated template.
+Designed for creativity and impact.
+Includes modern scroll effects and dark mode.
+    </pre>
+
+    <blockquote class="fade-in">
+      "Good design is obvious. Great design is transparent."
+    </blockquote>
+
+    <!-- Navigation -->
+    <div class="nav-buttons">
+      <a href="page2.html" class="nav-button go-next">Next Page</a>
+    </div>
+
+    <button id="back-to-top" title="Back to top">↑ Top</button>
+  </main>
+
+  <footer class="fade-in">
+    <p>© 2025 Your Template Name. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
+
+  <script>
+    // 3D tilt
+    VanillaTilt.init(document.querySelectorAll(".tilt-img"), {
+      max: 25,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.3,
+    });
+
+    // Fade out transition
+    document.querySelectorAll('a[href]').forEach(link => {
+      if (link.hostname === window.location.hostname) {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-out');
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 500);
+        });
+      }
+    });
+
+    // Parallax background
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+      const move = (el, factorX, factorY = factorX) => {
+        const elRef = document.querySelector(el);
+        if (elRef) {
+          elRef.style.transform = `translate(${x * factorX}px, ${y * factorY}px)`;
+        }
+      };
+
+      move('.fancy-gradient', 20);
+      move('.bokeh-layer', 40);
+      move('.parallax-waves', 30);
+    });
+
+    // Dark mode load state
+    if (localStorage.getItem('dark-mode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
+
+</body>
+</html>
